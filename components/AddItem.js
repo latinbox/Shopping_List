@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -26,11 +26,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddItem = ({title}) => {
+const AddItem = ({title, addItem}) => {
+  const [text, setText] = useState('');
+  const onChange = (textValue) => setText(textValue);
   return (
     <View>
-      <TextInput placeholder="agrega el articulo.." style={styles.input} />
-      <TouchableOpacity style={styles.btn}>
+      <TextInput
+        placeholder="agrega el articulo.."
+        style={styles.input}
+        onChangeText={onChange}
+      />
+      <TouchableOpacity style={styles.btn} onPress={() => addItem()}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} /> Agregar
         </Text>

@@ -21,7 +21,13 @@ const App = () => {
 
   const deleteItem = (id) => {
     setItems((prevItems) => {
-      return prevItems.filter((item) => item.id != id);
+      return prevItems.filter((item) => item.id !== id);
+    });
+  };
+
+  const addItem = (text) => {
+    setItems((prevItems) => {
+      return [{id: nextId(), text}, ...prevItems];
     });
   };
 
